@@ -99,17 +99,17 @@ aws sqs create-queue --endpoint-url http://localhost:4566 --queue-name cli-test-
 
 2. Listing QUEUEs
 ```bash
-aws aws sqs list-queues --endpoint-url http://localhost:4566 --profile localstack
+aws sqs list-queues --endpoint-url http://localhost:4566 --profile localstack
 ```
 
 3. Sending Messages
 ```bash
-aws aws sqs send-message --endpoint-url http://localhost:4566 --queue-url http://localhost:4566/000000000000/cli-test-queue --message-body "Testing Message" --message-attributes file://./src/aws-sqs/message.json --profile localstack
+aws sqs send-message --endpoint-url http://localhost:4566 --queue-url http://localhost:4566/000000000000/cli-test-queue --message-body "Testing Message" --message-attributes file://./src/aws-sqs/message.json --profile localstack
 ```
 
 4. Receiving Messages
 ```bash
-aws aws sqs receive-message --endpoint-url http://localhost:4566 --queue-url http://localhost:4566/000000000000/cli-test-queue --attribute-names All --message-attribute-names All  --profile localstack
+aws sqs receive-message --endpoint-url http://localhost:4566 --queue-url http://localhost:4566/000000000000/cli-test-queue --attribute-names All --message-attribute-names All  --profile localstack
 ```
 
 ### Code
