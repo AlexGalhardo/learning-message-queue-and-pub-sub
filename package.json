@@ -1,0 +1,28 @@
+{
+	"name": "learning-message-queues-and-pub-sub",
+	"scripts": {
+		"observer-pattern": "bun run src/observer-pattern/index.ts",
+		"rabbitmq-mq-producer": "bun run src/rabbitmq/message-queue/producer.ts",
+		"rabbitmq-mq-consumer": "bun run src/rabbitmq/message-queue/consumer.ts",
+		"rabbitmq-pubsub-publish": "bun run src/rabbitmq/pub-sub/publish.ts",
+		"rabbitmq-pubsub-subscriber": "bun run src/rabbitmq/pub-sub/subscriber.ts",
+		"bullmq-mq-job": "bun run src/bullmq/job.ts",
+		"bullmq-mq-worker": "bun run src/bullmq/worker.ts",
+		"format": "bunx prettier --write src/**/*.ts src/**/**/*.ts",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"@aws-sdk/client-sns": "^3.600.0",
+		"@aws-sdk/client-sqs": "^3.600.0",
+		"amqplib": "^0.10.4",
+		"bullmq": "^5.8.2",
+		"install": "^0.13.0"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.1.5",
+		"husky": "^9.0.11",
+		"prettier": "^3.3.2",
+		"typescript": "^5.5.2",
+		"@types/amqplib": "^0.10.5"
+	}
+}

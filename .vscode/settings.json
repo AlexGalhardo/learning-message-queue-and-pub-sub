@@ -1,0 +1,58 @@
+{
+	"terminal.integrated.fontSize": 14,
+	"editor.tabSize": 2,
+	"editor.fontSize": 16,
+	"editor.lineHeight": 26,
+	"editor.semanticHighlighting.enabled": false,
+	"editor.formatOnSave": true,
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"editor.rulers": [
+		80,
+		120
+	],
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"files.associations": {
+		".sequelizerc": "javascript",
+		".stylelintrc": "json",
+		".prettierrc": "json",
+		"*.tsx": "typescriptreact"
+	},
+	"typescript.tsserver.log": "verbose",
+	"material-icon-theme.activeIconPack": "nest",
+	"material-icon-theme.folders.associations": {
+		"infra": "app",
+		"entities": "class",
+		"domain": "class",
+		"schemas": "class",
+		"typeorm": "database",
+		"repositories": "mappings",
+		"http": "container",
+		"migrations": "tools",
+		"modules": "components",
+		"implementations": "core",
+		"dtos": "typescript",
+		"fakes": "mock",
+		"websockets": "pipe",
+		"protos": "pipe",
+		"grpc": "pipe",
+		"providers": "include",
+		"subscribers": "messages",
+		"useCases": "controller",
+		"kafka": "scripts",
+		"mappers": "meta",
+		"_shared": "shared",
+		"eslint-config": "tools",
+		"kube": "kubernetes"
+	},
+	"material-icon-theme.files.associations": {
+		"ormconfig.json": "database",
+		"tsconfig.json": "tune",
+		"*.proto": "3d",
+		"*.webpack.js": "webpack"
+	},
+	"editor.suggestSelection": "first",
+	"terminal.integrated.showExitAlert": false,
+	"window.zoomLevel": 1,
+}
