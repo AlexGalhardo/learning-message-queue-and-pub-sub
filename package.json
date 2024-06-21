@@ -1,17 +1,21 @@
 {
 	"name": "learning-message-queues-and-pub-sub",
 	"scripts": {
-		"observer-pattern": "bun run src/observer-pattern/index.ts",
-		"rabbitmq-mq-producer": "bun run src/rabbitmq/message-queue/producer.ts",
-		"rabbitmq-mq-consumer": "bun run src/rabbitmq/message-queue/consumer.ts",
-		"rabbitmq-pubsub-publish": "bun run src/rabbitmq/pub-sub/publish.ts",
-		"rabbitmq-pubsub-subscriber": "bun run src/rabbitmq/pub-sub/subscriber.ts",
-		"bullmq-mq-job": "bun run src/bullmq/job.ts",
-		"bullmq-mq-worker": "bun run src/bullmq/worker.ts",
+		"observer-pattern": "bun run ./src/observer-pattern/index.ts",
+		"rabbitmq-mq-producer": "bun run ./src/rabbitmq/message-queue/producer.ts",
+		"rabbitmq-mq-consumer": "bun run ./src/rabbitmq/message-queue/consumer.ts",
+		"rabbitmq-pubsub-publish": "bun run ./src/rabbitmq/pub-sub/publish.ts",
+		"rabbitmq-pubsub-subscriber": "bun run ./src/rabbitmq/pub-sub/subscriber.ts",
+		"bullmq-mq-job": "bun run ./src/bullmq/job.ts",
+		"bullmq-mq-worker": "bun run ./src/bullmq/worker.ts",
+		"aws-sqs-example": "bun run ./src/aws-sqs/example.ts",
+		"aws-sns-example": "bun run ./src/aws-sns/example.ts",
+		"aws-s3-example": "bun run ./src/aws-s3/example.ts",
 		"format": "bunx prettier --write src/**/*.ts src/**/**/*.ts",
 		"prepare": "husky"
 	},
 	"dependencies": {
+		"@aws-sdk/client-s3": "^3.600.0",
 		"@aws-sdk/client-sns": "^3.600.0",
 		"@aws-sdk/client-sqs": "^3.600.0",
 		"amqplib": "^0.10.4",
