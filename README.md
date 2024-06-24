@@ -132,13 +132,20 @@ bun run aws-sns-example
 bun run aws-s3-example
 ```
 
+## AWS Dynamodb Example
+
+1. Run example
+```bash
+bun run aws-dynamodb-example
+```
+
 ## Images Example
 
 ![rabbit-mq-management](https://github.com/AlexGalhardo/learning-message-queue-and-pub-sub/assets/19540357/cb4c3f92-c541-406b-905d-9590c0b50153)
 
 ![localstack-instances](https://github.com/AlexGalhardo/learning-message-queue-and-pub-sub/assets/19540357/f0ca9af2-dd4e-4faa-be0b-0bc4c47d00df)
 
-![aws-s3-example-code](https://github.com/AlexGalhardo/learning-message-queue-and-pub-sub/assets/19540357/e2700003-62f1-4706-a104-40b465db2f11)
+![aws-dynamodb-example](https://github.com/AlexGalhardo/learning-message-queue-and-pub-sub/assets/19540357/e0251c63-9d3b-4499-bb47-499172487a7d)
 
 ## License
 

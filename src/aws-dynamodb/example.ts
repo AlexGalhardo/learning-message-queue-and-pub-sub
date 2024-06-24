@@ -13,6 +13,7 @@ import {
     GetQueueAttributesCommand,
 } from "@aws-sdk/client-sqs";
 import { S3Client, CreateBucketCommand, PutObjectCommand } from "@aws-sdk/client-s3";
+import { DynamoDBClient, CreateTableCommand, PutItemCommand, ListTablesCommand } from "@aws-sdk/client-dynamodb";
 import { randomUUID } from "node:crypto";
 
 const snsClient = new SNSClient({
@@ -41,6 +42,15 @@ const s3Client = new S3Client({
         secretAccessKey: "test",
     },
     forcePathStyle: true,
+});
+
+const dynamoDBClient = new DynamoDBClient({
+    endpoint: "http://localhost:4566",
+    region: "us-east-1",
+    credentials: {
+        accessKeyId: "test",
+        secretAccessKey: "test",
+    },
 });
 
 async function createTopic(topicName: string) {
@@ -128,41 +138,60 @@ async function saveMessageToS3(bucketName: string, key: string, message: string)
     console.log("Message Saved to S3:", response.ETag);
 }
 
+async function createDynamoDBTable(tableName: string) {
+    const command = new CreateTableCommand({
+        TableName: tableName,
+        AttributeDefinitions: [{ AttributeName: "MessageId", AttributeType: "S" }],
+        KeySchema: [{ AttributeName: "MessageId", KeyType: "HASH" }],
+        ProvisionedThroughput: {
+            ReadCapacityUnits: 1,
+            WriteCapacityUnits: 1,
+        },
+    });
+    const response = await dynamoDBClient.send(command);
+    console.log("DynamoDB Table Created:", response.TableDescription?.TableName);
+}
+
+async function tableExists(tableName: string): Promise<boolean> {
+    const command = new ListTablesCommand({});
+    const response = await dynamoDBClient.send(command);
+    return response.TableNames?.includes(tableName) ?? false;
+}
+
+async function saveMessageToDynamoDB(tableName: string, messageId: string, message: string) {
+    const command = new PutItemCommand({
+        TableName: tableName,
+        Item: {
+            MessageId: { S: messageId },
+            Message: { S: message },
+        },
+    });
+    const response = await dynamoDBClient.send(command);
+    console.log("Message Saved to DynamoDB:", response);
+}
+
 (async () => {
     try {
-        // Create an SNS topic
         const topicArn = (await createTopic("test-topic")) as string;
-
-        // List SNS topics
         await listTopics();
-
-        // Create an SQS queue
         const queueUrl = (await createQueue("test-queue")) as string;
-
-        // List SQS queues
         await listQueues();
-
-        // Get the SQS queue ARN
-        const queueArn = (await getQueueArn(queueUrl)) as string;
-
-        // Subscribe the SQS queue to the SNS topic
-        await subscribeToTopic(topicArn, "sqs", queueArn);
-
-        // Publish a message to the SNS topic
+        const queueArn = await getQueueArn(queueUrl);
+        await subscribeToTopic(topicArn, "sqs", queueArn!);
         await publishMessage(topicArn, "Hello, SNS to SQS to S3!");
-
-        // Receive messages from the SQS queue
         const messages = await receiveMessages(queueUrl);
-
         if (messages && messages.length > 0) {
-            // Create an S3 bucket
             const bucketName = "aws-s3-test-bucket";
             await createBucket(bucketName);
-
-            // Save the received message to S3
             const messageKey = `message-${randomUUID()}.json`;
             const messageBody = JSON.stringify(messages[0]);
             await saveMessageToS3(bucketName, messageKey, messageBody);
+            const tableName = "Messages";
+            if (!(await tableExists(tableName))) {
+                await createDynamoDBTable(tableName);
+            }
+            const messageId = messages[0].MessageId!;
+            await saveMessageToDynamoDB(tableName, messageId, messageBody);
         }
     } catch (error) {
         console.error("Error:", error);
