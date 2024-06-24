@@ -10,11 +10,12 @@
 
 - [x] [RabbitMQ](https://www.rabbitmq.com/) Message Queue Example
 - [x] [RabbitMQ](https://www.rabbitmq.com/) PubSub Example
-- [x] Observer Pattern (GoF) Example
+- [x] [Observer Pattern](https://refactoring.guru/design-patterns/observer) (GoF) Example
 - [x] [BullMQ](https://bullmq.io/) Message Queue Example
-- [x] AWS SQS Example using LocalStack
-- [x] AWS SNS Example using LocalStack
-- [x] AWS S3 Example using LocalStack
+- [x] [AWS SQS](https://aws.amazon.com/sqs/) Example using LocalStack
+- [x] [AWS SNS](https://aws.amazon.com/sns/) Example using LocalStack
+- [x] [AWS S3](https://aws.amazon.com/pm/serv-s3/) Example using LocalStack
+- [x] [AWS Dynamodb](https://aws.amazon.com/pm/dynamodb/) Example using LocalStack
 
 ## Prerequisites
 - Install Bun: <https://bun.sh/docs/installation>
