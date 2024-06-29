@@ -10,6 +10,8 @@
 
 - [x] [RabbitMQ](https://www.rabbitmq.com/) Message Queue Example
 - [x] [RabbitMQ](https://www.rabbitmq.com/) PubSub Example
+- [x] [Apache Kafka](https://kafka.apache.org/) Message Queue Example
+- [x] [Apache Kafka](https://kafka.apache.org/) PubSub Example
 - [x] [Observer Pattern](https://refactoring.guru/design-patterns/observer) (GoF) Example
 - [x] [BullMQ](https://bullmq.io/) Message Queue Example
 - [x] [AWS SQS](https://aws.amazon.com/sqs/) Example using LocalStack
@@ -46,12 +48,12 @@ bun run observer-pattern
 
 1. Run producer (send message)
 ```bash
-bun run rabbitmq-mq-producer
+bun run rabbitmq-queue-producer
 ```
 
 2. Run consumer (consume message)
 ```bash
-bun run rabbitmq-mq-consumer
+bun run rabbitmq-queue-consumer
 ```
 
 ## RabbitMQ PubSub Example
@@ -63,7 +65,31 @@ bun run rabbitmq-pubsub-subscriber
 
 2. Run publish (publish message to subscribers consume)
 ```bash
-bun run rabbitmq-pubsub-publish
+bun run rabbitmq-pubsub-publisher
+```
+
+## Apache Kafka Message Queue Example
+
+1. Run producer (send messages)
+```bash
+bun run apache-kafka-queue-producer
+```
+
+2. Run consumer (consume messages)
+```bash
+bun run apache-kafka-queue-consumer
+```
+
+## Apache Kafka PubSub Example
+
+1. Run publisher (send messages to topic x)
+```bash
+bun run apache-kafka-pubsub-publisher
+```
+
+2. Run subscriber (subscribers consume messages from topic x)
+```bash
+bun run apache-kafka-pubsub-subscriber
 ```
 
 ## BullMQ Message Queue Example

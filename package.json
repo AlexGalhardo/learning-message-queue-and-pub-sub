@@ -2,33 +2,38 @@
 	"name": "learning-message-queues-and-pub-sub",
 	"scripts": {
 		"observer-pattern": "bun run ./src/observer-pattern/index.ts",
-		"rabbitmq-mq-producer": "bun run ./src/rabbitmq/message-queue/producer.ts",
-		"rabbitmq-mq-consumer": "bun run ./src/rabbitmq/message-queue/consumer.ts",
-		"rabbitmq-pubsub-publish": "bun run ./src/rabbitmq/pub-sub/publish.ts",
-		"rabbitmq-pubsub-subscriber": "bun run ./src/rabbitmq/pub-sub/subscriber.ts",
+		"rabbitmq-queue-producer": "bun run ./src/rabbitmq/message-queue/rabbitmq-producer.ts",
+		"rabbitmq-queue-consumer": "bun run ./src/rabbitmq/message-queue/rabbitmq-consumer.ts",
+		"rabbitmq-pubsub-publisher": "bun run ./src/rabbitmq/pub-sub/rabbitmq-publisher.ts",
+		"rabbitmq-pubsub-subscriber": "bun run ./src/rabbitmq/pub-sub/rabbitmq-subscriber.ts",
 		"bullmq-mq-job": "bun run ./src/bullmq/job.ts",
 		"bullmq-mq-worker": "bun run ./src/bullmq/worker.ts",
 		"aws-sqs-example": "bun run ./src/aws-sqs/example.ts",
 		"aws-sns-example": "bun run ./src/aws-sns/example.ts",
 		"aws-s3-example": "bun run ./src/aws-s3/example.ts",
 		"aws-dynamodb-example": "bun run ./src/aws-dynamodb/example.ts",
+		"apache-kafka-queue-producer": "bun run ./src/apache-kafka/message-queue/kafka-producer.ts",
+		"apache-kafka-queue-consumer": "bun run ./src/apache-kafka/message-queue/kafka-consumer.ts",
+		"apache-kafka-pubsub-publisher": "bun run ./src/apache-kafka/pub-sub/kafka-publisher.ts",
+		"apache-kafka-pubsub-subscriber": "bun run ./src/apache-kafka/pub-sub/kafka-subscriber.ts",
 		"format": "bunx prettier --write src/**/*.ts src/**/**/*.ts",
 		"prepare": "husky"
 	},
 	"dependencies": {
-		"@aws-sdk/client-dynamodb": "^3.602.0",
-		"@aws-sdk/client-s3": "^3.600.0",
-		"@aws-sdk/client-sns": "^3.600.0",
-		"@aws-sdk/client-sqs": "^3.600.0",
+		"@aws-sdk/client-dynamodb": "^3.606.0",
+		"@aws-sdk/client-s3": "^3.606.0",
+		"@aws-sdk/client-sns": "^3.606.0",
+		"@aws-sdk/client-sqs": "^3.606.0",
 		"amqplib": "^0.10.4",
-		"bullmq": "^5.8.2",
-		"install": "^0.13.0"
+		"bullmq": "^5.8.3",
+		"install": "^0.13.0",
+		"kafkajs": "^2.2.4"
 	},
 	"devDependencies": {
-		"@types/bun": "^1.1.5",
+		"@types/amqplib": "^0.10.5",
+		"@types/bun": "^1.1.6",
 		"husky": "^9.0.11",
 		"prettier": "^3.3.2",
-		"typescript": "^5.5.2",
-		"@types/amqplib": "^0.10.5"
+		"typescript": "^5.5.2"
 	}
 }
